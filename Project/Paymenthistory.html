@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ประวัติการชำระเงิน - หอพักอุสรี</title>
+  <link rel="stylesheet" href="css/Paymenthistory.css">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <h2>หอพักอุสรี<br><small>ลาดกระบัง</small></h2>
+    </div>
+    <div class="nav-links">
+      <a href="home.html">หน้าหลัก</a>
+      <a href="#" id="openCheckBill">เช็คยอดค้างชำระ</a>
+      <a href="#" id="openComplaint">ร้องเรียน/ซ่อมบำรุง</a>
+      <a href="payment-history.html" class="active">ประวัติการชำระเงิน</a>
+    </div>
+    <div class="nav-user">
+      <img src="images/profile.png" alt="profile" class="profile-pic">
+      <button class="logout-btn" onclick="logout()">🚪 ออกจากระบบ</button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="header">
+      <button class="back-btn" onclick="window.location.href='home.html'">&#8592;</button>
+      <h2>ประวัติการชำระเงิน</h2>
+    </div>
+
+    <div class="info">
+      <div class="tenant-info">
+        <span class="label">ห้อง</span> 101 &nbsp;
+        <span>นางสำรวย สวยดี</span>
+      </div>
+      <div class="dorm-info">
+        <div>หอพักอุสุรี</div>
+        <div class="subtext">ลาดกระบัง</div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ว/ด/ป</th>
+          <th>สถานะการชำระ</th>
+          <th>ยอดค้างชำระ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>04/11/2567</td>
+          <td class="paid">ชำระแล้ว</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>01/12/2567</td>
+          <td class="paid">ชำระแล้ว</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>03/01/2567</td>
+          <td class="paid">ชำระแล้ว</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>02/02/2567</td>
+          <td class="paid">ชำระแล้ว</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>05/03/2567</td>
+          <td class="paid">ชำระแล้ว</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>01/04/2568</td>
+          <td class="unpaid">ยังไม่ชำระ</td>
+          <td class="amount">3,592</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<script src="js/Paymenthistory.js"></script>
+</html>

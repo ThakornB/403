@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>หอพักอุสรี ลาดกระบัง</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <h2>หอพักอุสรี<br><small>ลาดกระบัง</small></h2>
+    </div>
+    <div class="nav-links">
+      <a href="#">หน้าหลัก</a>
+      <a href="#">ห้องว่างล่าสุด</a>
+      <a href="#">สิ่งอำนวยความสะดวก</a>
+    </div>
+    <div class="nav-buttons">
+      <button class="register" onclick="openModal('registerModal')">ลงทะเบียน</button>
+      <button class="login" onclick="openModal('loginModal')">เข้าสู่ระบบ</button>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header-section">
+    <img src="images/homepage.jpg" alt="ภาพหน้าหอพัก" class="homepage-img">
+    <div class="header-overlay">
+      <h1>หอพักอุสรี<br><span>ลาดกระบัง</span></h1>
+      <button class="contact-btn">📞 089-455-5888</button>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h2>หอพักอุสรี ลาดกระบัง</h2>
+    <ul class="info">
+      <li>🏠 หอพักลาดกระบัง 1/5 ซัก 173,169 และหอซอยช่างยนต์ 12 ถีบ 31,12</li>
+      <li>📝 เช่าหอพัก</li>
+      <li>👤 นางสาวสุภาวดี รัชอุดมลาภ</li>
+      <li>📞 089-455-5888</li>
+    </ul>
+
+    <!-- Room List -->
+    <div class="room-list">
+      <div class="room-card">
+        <img src="images/room1.jpg" alt="room1">
+        <div class="room-price">
+          <span class="price">💵 3,000</span><br>
+          <span class="air-conditioner">มีแอร์</span>
+        </div>
+      </div>
+      <div class="room-card">
+        <img src="images/room2.jpg" alt="room2">
+        <div class="room-price">
+          <span class="price">💵 1,900</span><br>
+          <span class="no-air-conditioner">ไม่มีแอร์</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Register -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <h2>ลงทะเบียน</h2>
+        <form id="registerForm">
+          <div class="row">
+            <div class="input-group">
+              <label for="registerName">ชื่อ</label>
+              <input type="text" id="registerName" name="registerName" required>
+            </div>
+            <div class="input-group">
+              <label for="registerSurname">นามสกุล</label>
+              <input type="text" id="registerSurname" name="registerSurname" required>
+            </div>
+          </div>      
+          <div class="form-group">
+            <label for="registerPhone">เบอร์โทรศัพท์</label>
+            <input type="text" id="registerPhone" required>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">รหัสผ่าน</label>
+            <input type="password" id="registerPassword" required>
+          </div>
+          <div class="form-group">
+            <label for="registerIdCard">เลขบัตรประชาชน</label>
+            <input type="text" id="registerIdCard" required>
+          </div>
+          <div class="form-group">
+            <label for="registerRoomNumber">เลขห้องพัก</label>
+            <input type="text" id="registerRoomNumber" required>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="cancel-btn" onclick="closeModal('registerModal')">ยกเลิก</button>
+            <button type="submit" class="submit-btn">สมัครสมาชิก</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal: Login -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <h2 class="modal-title">เข้าสู่ระบบ</h2>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" required>
+          </div>
+          <div class="input-group">
+            <label for="loginPassword">รหัสผ่าน</label>
+            <input type="password" id="loginPassword" required>
+          </div>
+          <a href="#" class="error-text">ลืมรหัสผ่าน?</a>
+          <div class="modal-actions">
+            <button type="button" class="cancel-btn" onclick="closeModal('loginModal')">ยกเลิก</button>
+            <button type="submit" class="submit-btn">เข้าสู่ระบบ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>

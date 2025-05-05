@@ -1,0 +1,689 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #074799;
+    padding: 10px 30px;
+    color: white;
+  }
+  
+  .navbar-left h2 {
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+  
+  .nav-links a:hover {
+    background-color: #0d4d8c;
+  }
+  
+  .nav-buttons button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Header Section */
+  .header-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  .homepage-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .header-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+  
+  .header-overlay h1 {
+    font-size: 48px;
+    margin: 0;
+    line-height: 1.3;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  }
+  
+  .header-overlay h1 span {
+    font-size: 36px;
+  }
+  
+  .contact-btn {
+    margin-top: 20px;
+    background-color: #db9a31;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .contact-btn:hover {
+    background-color: #c17c2e;
+    transform: scale(1.05);
+  }
+  
+  .contact-btn:active {
+    background-color: #b06a2b;
+    transform: scale(1);
+  }
+  
+  /* Content */
+  .content {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+  }
+  
+  .content h2 {
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  .info li {
+    margin: 10px 0;
+  }
+  
+  /* Room List */
+  .room-list {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .room-card {
+    width: 250px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .room-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .room-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5px;
+  }
+  
+  .room-price {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .room-price .price {
+    font-weight: bold;
+    font-size: 22px;
+    color: #f4a400;
+    padding-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .room-price .air-conditioner {
+    font-size: 14px;
+    color: #007BFF;
+    font-weight: bold;
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #e1f4ff; 
+  }
+  
+  .room-price .no-air-conditioner {
+    font-size: 14px;
+    color: #ff6f61;
+    font-weight: bold;
+    margin-top: 5px;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffe1e0;
+  }
+  
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  
+  .modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .cancel-btn {
+    background-color: #7d8ca0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .submit-btn {
+    background-color: #f4a400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .row input {
+    width: 50%;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+  /* Navbar After Login */
+  .nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .user-initial {
+    background-color: #f4a400;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+  
+  .profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+  }
+  
+  .logout-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  /* Modal style */
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .modal-content select,
+  .modal-content textarea,
+  .modal-content input[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn, .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+    color: black;
+  }
+  /* Modal style */
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .modal-content select,
+  .modal-content textarea,
+  .modal-content input[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn, .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  .submit-btn {
+    background-color: #4a71ff;
+    color: white;
+  }
+  
+  .submit-btn {
+    background-color: #4a71ff;
+    color: white;
+  }
+  
+  .modal {
+    display: none; /* เปิดตอนกดปุ่ม */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+  
+  .modal-container {
+    background: #fff;
+    display: flex;
+    width: 850px;
+    max-width: 95%;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+  }
+  
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .payment-left, .payment-right {
+    padding: 24px;
+    box-sizing: border-box;
+  }
+  
+  .payment-left {
+    width: 50%;
+    border-right: 1px solid #ddd;
+  }
+  
+  .payment-right {
+    width: 50%;
+    background: #f7f7f7;
+  }
+  
+  .payment-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .payment-method.selected {
+    font-weight: bold;
+    color: #2e7d32;
+  }
+  
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .green {
+    background-color: #4caf50;
+  }
+  
+  .gray {
+    background-color: #ccc;
+  }
+  
+  .promptpay-logo {
+    height: 18px;
+    margin-left: auto;
+  }
+  
+  .bank-icons img {
+    height: 28px;
+    margin-right: 6px;
+  }
+  
+  .qr-container {
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  .qr-container img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .amount {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .confirm-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .payment-right h2 {
+    margin-bottom: 12px;
+    font-size: 20px;
+  }
+  
+  .payment-right .info p {
+    margin: 6px 0;
+    font-size: 15px;
+  }
+  
+  .payment-right .info hr {
+    margin: 12px 0;
+  }
+  
+  .payment-right .total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+  }
+  .confirm-payment {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f9fdff;
+    border-radius: 12px;
+  }
+  
+  .confirm-payment .tag {
+    background-color: #f2f4f8;
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .confirm-payment .clock-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .confirm-payment .warning {
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+  
+  .confirm-payment .upload-section {
+    margin-top: 1rem;
+  }
+  
+  .confirm-payment input[type="file"] {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .confirm-payment .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 0.6rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+/* Modal ใบเสร็จ */
+.receipt-modal {
+    max-width: 800px;
+    padding: 2rem;
+    font-family: 'Prompt', sans-serif;
+  }
+  .receipt-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .charge-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  .charge-table th, .charge-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: right;
+  }
+  .charge-table td:first-child {
+    text-align: left;
+  }
+  .payment-method {
+    margin-top: 1rem;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
